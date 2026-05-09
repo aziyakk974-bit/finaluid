@@ -7,19 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --blue:     #2563eb;
-      --blue2:    #3b82f6;
-      --violet:   #5b21b6;
-      --violet2:  #7c3aed;
-      --violet3:  #a78bfa;
-      --sky:      #0ea5e9;
-      --indigo:   #4338ca;
-      --deep:     #818cf8;
-      --rose:     #6366f1;
-      --cream:    #000008;
-      --text:     #e2e8ff;
-      --muted:    #7c8db5;
-      --card-bg:  rgba(5,8,30,0.80);
+      --blue:    #2563eb;
+      --blue2:   #3b82f6;
+      --violet:  #5b21b6;
+      --violet2: #7c3aed;
+      --violet3: #a78bfa;
+      --sky:     #0ea5e9;
+      --indigo:  #4338ca;
+      --text:    #e2e8ff;
+      --muted:   #7c8db5;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -29,53 +25,31 @@
       color: var(--text);
       overflow-x: hidden;
     }
-    /* ── BG ── */
+
+    
     .bg-canvas {
       position: fixed;
       inset: 0;
       z-index: -2;
-      background: radial-gradient(ellipse 90% 70% at 50% 0%, #05082a 0%, #000010 55%, #000008 100%);
-    }
-    .bg-canvas::before {
-      content: '';
-      position: absolute;
-      inset: 0;
       background:
-        radial-gradient(ellipse 55% 50% at 15% 25%, rgba(37,99,235,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 45% at 85% 75%, rgba(91,33,182,0.20) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(67,56,202,0.15) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 35% at 80% 15%, rgba(14,165,233,0.10) 0%, transparent 55%);
-      animation: bgPulse 12s ease-in-out infinite alternate;
+        radial-gradient(ellipse 55% 50% at 15% 25%, rgba(37,99,235,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 85% 75%, rgba(91,33,182,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 70% at 50% 0%, #05082a 0%, #000010 55%, #000008 100%);
     }
-    @keyframes bgPulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+
+    
     .orb {
       position: fixed;
       border-radius: 50%;
       filter: blur(90px);
-      opacity: 0.28;
+      opacity: 0.18;
       z-index: -1;
       pointer-events: none;
-      animation: floatOrb linear infinite;
     }
-    .orb-1 { width:450px; height:450px; background: #1d4ed8; top: -140px; left: -140px; animation-duration: 20s; }
-    .orb-2 { width:360px; height:360px; background: #5b21b6; bottom: -110px; right: -110px; animation-duration: 17s; animation-direction: reverse; }
-    .orb-3 { width:260px; height:260px; background: #0369a1; top: 40%; left: 72%; animation-duration: 23s; }
-    .orb-4 { width:220px; height:220px; background: #3730a3; top: 60%; left: 8%; animation-duration: 26s; animation-direction: reverse; }
-    @keyframes floatOrb {
-      0%   { transform: translate(0,0) scale(1); }
-      33%  { transform: translate(30px,-40px) scale(1.05); }
-      66%  { transform: translate(-20px,30px) scale(0.95); }
-      100% { transform: translate(0,0) scale(1); }
-    }
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      opacity: 0.4;
-    }
-    /* ── NAV ── */
+    .orb-1 { width: 400px; height: 400px; background: #1d4ed8; top: -120px; left: -120px; }
+    .orb-2 { width: 320px; height: 320px; background: #5b21b6; bottom: -100px; right: -100px; }
+
+    
     nav {
       position: sticky;
       top: 0;
@@ -113,7 +87,8 @@
     nav a:hover::before { opacity: 1; }
     nav a:hover { color: #fff; }
     nav a span { position: relative; z-index: 1; }
-    /* ── PAGE ── */
+
+    
     .page {
       max-width: 860px;
       margin: 0 auto;
@@ -122,64 +97,40 @@
       flex-direction: column;
       gap: 1.6rem;
     }
-    /* ── CARDS ── */
+
+    
     .card {
       background: rgba(5,8,30,0.78);
       backdrop-filter: blur(18px) saturate(160%);
       border-radius: 24px;
       padding: 34px 38px;
       border: 1px solid rgba(59,130,246,0.2);
-      box-shadow: 0 8px 40px rgba(0,10,80,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
-      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s;
-      animation: cardIn 0.6s cubic-bezier(.34,1.56,.64,1) both;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(37,99,235,0.22), inset 0 1px 0 rgba(255,255,255,0.07);
-      border-color: rgba(99,102,241,0.4);
+      box-shadow: 0 8px 40px rgba(0,10,80,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+      animation: cardIn 0.5s ease both;
     }
     .card:nth-child(1) { animation-delay: 0.0s; }
-    .card:nth-child(2) { animation-delay: 0.08s; }
-    .card:nth-child(3) { animation-delay: 0.16s; }
-    .card:nth-child(4) { animation-delay: 0.24s; }
-    .card:nth-child(5) { animation-delay: 0.32s; }
-    .card:nth-child(6) { animation-delay: 0.40s; }
-    .card:nth-child(7) { animation-delay: 0.48s; }
+    .card:nth-child(2) { animation-delay: 0.07s; }
+    .card:nth-child(3) { animation-delay: 0.14s; }
+    .card:nth-child(4) { animation-delay: 0.21s; }
+    .card:nth-child(5) { animation-delay: 0.28s; }
+    .card:nth-child(6) { animation-delay: 0.35s; }
+    .card:nth-child(7) { animation-delay: 0.42s; }
     @keyframes cardIn {
-      from { opacity: 0; transform: translateY(30px) scale(0.97); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    /* ── HERO ── */
+
+    
     .hero-card {
       background: linear-gradient(135deg, rgba(15,30,100,0.95) 0%, rgba(30,10,80,0.95) 50%, rgba(10,50,150,0.92) 100%);
       border: 1px solid rgba(59,130,246,0.35);
-      position: relative;
-      overflow: hidden;
       padding: 44px 40px;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.10)'/%3E%3C/svg%3E");
-      animation: dotScroll 15s linear infinite;
-    }
-    @keyframes dotScroll { to { background-position: 60px 60px; } }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
-      bottom: -100px; right: -50px;
-      border-radius: 50%;
     }
     .hero {
       display: flex;
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
     }
     .avatar-wrap { position: relative; flex-shrink: 0; }
     .avatar-wrap img {
@@ -206,24 +157,13 @@
       animation: spin 30s linear infinite reverse;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .avatar-glow {
-      position: absolute;
-      inset: -20px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%);
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50%       { opacity: 1;   transform: scale(1.1); }
-    }
+
     .hero-info h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: #fff;
       line-height: 1.1;
-      text-shadow: 0 2px 20px rgba(37,99,235,0.4);
     }
     .hero-info .tagline {
       margin-top: 0.5rem;
@@ -239,7 +179,6 @@
       margin-top: 10px;
       background: rgba(37,99,235,0.2);
       border: 1px solid rgba(99,102,241,0.4);
-      backdrop-filter: blur(8px);
       color: #c7d2fe;
       font-size: 0.78rem;
       font-weight: 600;
@@ -253,10 +192,11 @@
       animation: blink 2s ease-in-out infinite;
     }
     @keyframes blink {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
-      50%       { opacity: 0.7; box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.5; }
     }
-    /* ── SECTION HEADINGS ── */
+
+    
     h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem;
@@ -275,23 +215,17 @@
       bottom: 0; left: 0;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--violet2), var(--sky), var(--indigo));
-      background-size: 300% 100%;
-      animation: gradientSlide 4s linear infinite;
+      background: linear-gradient(90deg, var(--blue), var(--violet2), var(--sky));
       border-radius: 999px;
     }
-    @keyframes gradientSlide {
-      0%   { background-position: 0% 0%; }
-      100% { background-position: 300% 0%; }
-    }
-    /* ── ABOUT ── */
+
+    
     .about-intro {
       font-size: 0.97rem;
       line-height: 1.9;
       color: var(--text);
       margin-bottom: 1.4rem;
     }
-    /* About sub-boxes grid */
     .about-boxes {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -301,67 +235,24 @@
       border-radius: 16px;
       padding: 20px 22px;
       border: 1px solid;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+      transition: border-color 0.2s;
     }
-    .about-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 36px rgba(37,99,235,0.18);
-    }
-    .about-box::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.05;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect x='0' y='0' width='40' height='40' fill='none' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E");
-    }
-    .ab-practice {
-      background: linear-gradient(135deg, rgba(29,78,216,0.18), rgba(67,56,202,0.18));
-      border-color: rgba(59,130,246,0.3);
-    }
-    .ab-fundamentals {
-      background: linear-gradient(135deg, rgba(91,33,182,0.18), rgba(124,58,237,0.18));
-      border-color: rgba(124,58,237,0.3);
-    }
-    .ab-curiosity {
-      background: linear-gradient(135deg, rgba(3,105,161,0.18), rgba(14,165,233,0.18));
-      border-color: rgba(14,165,233,0.3);
-    }
-    .ab-goals {
-      background: linear-gradient(135deg, rgba(55,48,163,0.18), rgba(79,70,229,0.18));
-      border-color: rgba(99,102,241,0.3);
-    }
-    .about-box-icon {
-      font-size: 1.6rem;
-      margin-bottom: 8px;
-      display: block;
-      animation: floatIcon 4s ease-in-out infinite;
-    }
+    .about-box:hover { border-color: rgba(167,139,250,0.5); }
+    .ab-practice    { background: linear-gradient(135deg, rgba(29,78,216,0.18), rgba(67,56,202,0.18));   border-color: rgba(59,130,246,0.3); }
+    .ab-fundamentals{ background: linear-gradient(135deg, rgba(91,33,182,0.18), rgba(124,58,237,0.18));  border-color: rgba(124,58,237,0.3); }
+    .ab-curiosity   { background: linear-gradient(135deg, rgba(3,105,161,0.18), rgba(14,165,233,0.18));  border-color: rgba(14,165,233,0.3); }
+    .ab-goals       { background: linear-gradient(135deg, rgba(55,48,163,0.18), rgba(79,70,229,0.18));   border-color: rgba(99,102,241,0.3); }
+    .about-box-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
     .about-box h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--violet3);
-      margin-bottom: 7px;
+      font-size: 1rem; font-weight: 700;
+      color: var(--violet3); margin-bottom: 7px;
     }
-    .about-box p {
-      font-size: 0.83rem;
-      line-height: 1.65;
-      color: rgba(200,215,255,0.82);
-      position: relative;
-    }
-    /* Full-width about box */
-    .about-box-full {
-      grid-column: 1 / -1;
-    }
-    @keyframes floatIcon {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-5px); }
-    }
-    /* ── SKILLS ── */
+    .about-box p { font-size: 0.83rem; line-height: 1.65; color: rgba(200,215,255,0.82); }
+
+  
     .skills-list { display: flex; flex-direction: column; gap: 20px; }
-    .skill-row { display: flex; flex-direction: column; gap: 6px; }
+    .skill-row   { display: flex; flex-direction: column; gap: 6px; }
     .skill-header {
       display: flex;
       justify-content: space-between;
@@ -369,362 +260,25 @@
       margin-bottom: 2px;
     }
     .skill-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      cursor: default;
-      border: 1.5px solid;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; font-weight: 700;
+      padding: 0.4rem 1rem; border-radius: 999px; border: 1.5px solid;
     }
-    .st-python { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.45); color: #93c5fd; }
-    .st-java   { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.45); color: #a5b4fc; }
-    .st-html   { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
-    .st-oop    { background: rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.45); color: #7dd3fc; }
-    .st-ps     { background: rgba(67,56,202,0.12); border-color: rgba(67,56,202,0.45); color: #818cf8; }
-    .skill-pct {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--violet3);
-      letter-spacing: 0.05em;
-    }
+    .st-python { background: rgba(59,130,246,0.12);  border-color: rgba(59,130,246,0.45);  color: #93c5fd; }
+    .st-java   { background: rgba(99,102,241,0.12);  border-color: rgba(99,102,241,0.45);  color: #a5b4fc; }
+    .st-html   { background: rgba(124,58,237,0.12);  border-color: rgba(124,58,237,0.45);  color: #c4b5fd; }
+    .st-oop    { background: rgba(14,165,233,0.12);  border-color: rgba(14,165,233,0.45);  color: #7dd3fc; }
+    .st-ps     { background: rgba(67,56,202,0.12);   border-color: rgba(67,56,202,0.45);   color: #818cf8; }
+    .skill-pct { font-size: 0.75rem; font-weight: 800; color: var(--violet3); letter-spacing: 0.05em; }
     .progress-track {
-      width: 100%;
-      height: 7px;
+      width: 100%; height: 7px;
       background: rgba(59,130,246,0.12);
-      border-radius: 999px;
-      overflow: hidden;
+      border-radius: 999px; overflow: hidden;
       border: 1px solid rgba(59,130,246,0.12);
     }
     .progress-fill {
-      height: 100%;
-      border-radius: 999px;
-      width: 0%;
-      transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
-      position: relative;
+      height: 100%; border-radius: 999px; width: 0%;
     }
-    .progress-fill::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 20px;
-      height: 100%;
-      background: rgba(255,255,255,0.35);
-      border-radius: 999px;
-      filter: blur(3px);
-    }
-    .pf-python { background: linear-gradient(90deg, #1d4ed8, #3b82f6, #60a5fa); }
-    .pf-java   { background: linear-gradient(90deg, #4338ca, #6366f1, #818cf8); }
-    .pf-html   { background: linear-gradient(90deg, #5b21b6, #7c3aed, #a78bfa); }
-    .pf-oop    { background: linear-gradient(90deg, #0369a1, #0ea5e9, #38bdf8); }
-    .pf-ps     { background: linear-gradient(90deg, #3730a3, #4f46e5, #818cf8); }
-    /* Skill description text */
-    .skill-desc {
-      font-size: 0.81rem;
-      line-height: 1.65;
-      color: var(--muted);
-      margin-top: 4px;
-      padding-left: 4px;
-    }
-    /* ── PROJECTS ── */
-    .project-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .project-card {
-      border-radius: 16px;
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect x='0' y='0' width='40' height='40' fill='none' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E");
-    }
-    .pc-library  { background: linear-gradient(135deg, #1e3a8a, #1d4ed8); border: 1px solid rgba(59,130,246,0.3); }
-    .pc-hospital { background: linear-gradient(135deg, #312e81, #4338ca); border: 1px solid rgba(99,102,241,0.3); }
-    .pc-python   { background: linear-gradient(135deg, #1e1b4b, #3730a3); border: 1px solid rgba(67,56,202,0.3); }
-    .pc-future   { background: linear-gradient(135deg, #0c2a1a, #064e3b, #0c4a2e); border: 1px solid rgba(52,211,153,0.3); }
-    /* WIP badge */
-    .wip-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      background: rgba(52,211,153,0.15);
-      border: 1px solid rgba(52,211,153,0.4);
-      color: #6ee7b7;
-      margin-bottom: 8px;
-      letter-spacing: 0.04em;
-      animation: wipPulse 2.5s ease-in-out infinite;
-    }
-    @keyframes wipPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
-      50% { box-shadow: 0 0 0 4px rgba(52,211,153,0.12); }
-    }
-    /* Project tags */
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-      margin-bottom: 2px;
-      position: relative;
-    }
-    .ptag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 2px 9px;
-      border-radius: 999px;
-      letter-spacing: 0.04em;
-    }
-    .ptag-java   { background: rgba(99,102,241,0.18); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; }
-    .ptag-oop    { background: rgba(59,130,246,0.18); border: 1px solid rgba(59,130,246,0.4); color: #93c5fd; }
-    .ptag-python { background: rgba(234,179,8,0.12);  border: 1px solid rgba(234,179,8,0.35); color: #fde68a; }
-    .ptag-logic  { background: rgba(14,165,233,0.12); border: 1px solid rgba(14,165,233,0.35); color: #7dd3fc; }
-    .ptag-web    { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); color: #6ee7b7; }
-    .ptag-future { background: rgba(167,139,250,0.12);border: 1px solid rgba(167,139,250,0.35);color: #c4b5fd; }
-    .project-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-      position: relative;
-    }
-    .project-card p {
-      font-size: 0.82rem;
-      color: rgba(200,215,255,0.85);
-      line-height: 1.55;
-      position: relative;
-    }
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 12px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.3rem 0.85rem;
-      border: 1.5px solid rgba(255,255,255,0.35);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      transition: all 0.2s;
-      position: relative;
-    }
-    .project-link:hover {
-      background: rgba(59,130,246,0.4);
-      border-color: rgba(147,197,253,0.8);
-    }
-    .project-icon {
-      font-size: 2rem;
-      position: absolute;
-      top: 16px; right: 18px;
-      opacity: 0.2;
-      animation: floatIcon 4s ease-in-out infinite;
-    }
-    /* ── EDUCATION ── */
-    .edu-timeline { display: flex; flex-direction: column; gap: 0; }
-    .edu-item {
-      display: flex;
-      gap: 18px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(59,130,246,0.12);
-      position: relative;
-    }
-    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .edu-item:first-child { padding-top: 0; }
-    .edu-dot {
-      width: 42px; height: 42px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-    .edu-dot-btech  { background: linear-gradient(135deg,#1d4ed8,#4338ca); }
-    .edu-dot-school { background: linear-gradient(135deg,#0369a1,#0ea5e9); }
-    .edu-content h3 {
-      font-size: 0.97rem;
-      font-weight: 700;
-      color: var(--violet3);
-    }
-    .edu-content p {
-      margin-top: 3px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .edu-desc {
-      margin-top: 10px !important;
-      font-size: 0.83rem !important;
-      line-height: 1.7 !important;
-      color: rgba(200,215,255,0.75) !important;
-    }
-    .edu-badge {
-      display: inline-block;
-      margin-top: 7px;
-      font-size: 0.73rem;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--blue), var(--violet2));
-      color: #fff;
-      letter-spacing: 0.04em;
-    }
-    /* ── GROWTH PLAN ── */
-    .growth-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .growth-item {
-      display: flex;
-      gap: 18px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(59,130,246,0.12);
-    }
-    .growth-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .growth-item:first-child { padding-top: 0; }
-    .growth-dot {
-      width: 42px; height: 42px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-    .gd-dsa        { background: linear-gradient(135deg, #1d4ed8, #4338ca); }
-    .gd-consistency{ background: linear-gradient(135deg, #5b21b6, #7c3aed); }
-    .gd-ai         { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
-    .gd-placement  { background: linear-gradient(135deg, #065f46, #059669); }
-    .growth-content h3 {
-      font-size: 0.97rem;
-      font-weight: 700;
-      color: var(--violet3);
-      margin-bottom: 5px;
-    }
-    .growth-content p {
-      font-size: 0.85rem;
-      line-height: 1.75;
-      color: rgba(200,215,255,0.78);
-    }
-    /* ── LANGUAGES ── */
-    .lang-grid { display: flex; gap: 12px; flex-wrap: wrap; }
-    .lang-chip {
-      padding: 0.6rem 1.5rem;
-      border-radius: 14px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
-      cursor: default;
-    }
-    .lc-en {
-      background: rgba(37,99,235,0.15);
-      border: 1.5px solid rgba(99,102,241,0.4);
-      color: #a5b4fc;
-    }
-    .lc-ml {
-      background: rgba(91,33,182,0.15);
-      border: 1.5px solid rgba(124,58,237,0.4);
-      color: #c4b5fd;
-    }
-    .lang-chip:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(37,99,235,0.2);
-    }
-    /* ── CONTACT ── */
-    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      background: rgba(10,15,50,0.6);
-      border: 1px solid rgba(59,130,246,0.15);
-      transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
-    }
-    .contact-item:hover {
-      transform: translateX(6px);
-      background: rgba(20,30,80,0.8);
-      box-shadow: 0 6px 20px rgba(37,99,235,0.15);
-      border-color: rgba(99,102,241,0.4);
-    }
-    .contact-icon {
-      width: 40px; height: 40px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-    .ci-phone  { background: linear-gradient(135deg,#1d4ed8,#2563eb); }
-    .ci-email  { background: linear-gradient(135deg,#0369a1,#0ea5e9); }
-    .ci-github { background: linear-gradient(135deg,#1e1b4b,#312e81); }
-    .contact-text { display: flex; flex-direction: column; gap: 1px; }
-    .contact-label { font-size: 0.72rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .contact-item a {
-      color: var(--violet3);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    .contact-item a:hover { color: var(--blue2); }
-    /* ── SCROLL-REVEAL (CSS only via animation-play-state) ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      animation: revealAnim 0.7s cubic-bezier(.34,1.56,.64,1) forwards;
-      animation-play-state: paused;
-    }
-    /* We use animation-delay tricks for stagger but trigger via scroll using
-       the :has selector trick or a simple CSS @keyframes approach.
-       Since we can't use JS for scroll, we use animation-timeline with scroll() */
-    @supports (animation-timeline: scroll()) {
-      .reveal {
-        animation: revealAnim 0.7s cubic-bezier(.34,1.56,.64,1) both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 25%;
-      }
-    }
-    /* Fallback: just show everything nicely with staggered delays */
-    @supports not (animation-timeline: scroll()) {
-      .reveal {
-        animation: revealAnim 0.7s cubic-bezier(.34,1.56,.64,1) both;
-      }
-      .reveal:nth-of-type(1) { animation-delay: 0.1s; }
-      .reveal:nth-of-type(2) { animation-delay: 0.2s; }
-      .reveal:nth-of-type(3) { animation-delay: 0.3s; }
-      .reveal:nth-of-type(4) { animation-delay: 0.4s; }
-      .reveal:nth-of-type(5) { animation-delay: 0.5s; }
-      .reveal:nth-of-type(6) { animation-delay: 0.6s; }
-    }
-    @keyframes revealAnim {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    /* Progress bar animation via CSS scroll-timeline on the skills card */
     @supports (animation-timeline: scroll()) {
       .progress-fill {
         animation: fillBar 1.4s cubic-bezier(0.16,1,0.3,1) both;
@@ -735,18 +289,137 @@
     @supports not (animation-timeline: scroll()) {
       .progress-fill { width: var(--target-w, 0%); animation: fillBarDirect 1.4s 0.5s cubic-bezier(0.16,1,0.3,1) both; }
     }
-    @keyframes fillBar {
-      from { width: 0%; }
-      to   { width: var(--target-w, 0%); }
+    @keyframes fillBar      { from { width: 0%; } to { width: var(--target-w, 0%); } }
+    @keyframes fillBarDirect{ from { width: 0%; } to { width: var(--target-w, 0%); } }
+    .pf-python { background: linear-gradient(90deg, #1d4ed8, #3b82f6, #60a5fa); }
+    .pf-java   { background: linear-gradient(90deg, #4338ca, #6366f1, #818cf8); }
+    .pf-html   { background: linear-gradient(90deg, #5b21b6, #7c3aed, #a78bfa); }
+    .pf-oop    { background: linear-gradient(90deg, #0369a1, #0ea5e9, #38bdf8); }
+    .pf-ps     { background: linear-gradient(90deg, #3730a3, #4f46e5, #818cf8); }
+    .skill-desc { font-size: 0.81rem; line-height: 1.65; color: var(--muted); margin-top: 4px; padding-left: 4px; }
+
+    
+    .project-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .project-card {
+      border-radius: 16px; padding: 20px;
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.25s;
     }
-    @keyframes fillBarDirect {
-      from { width: 0%; }
-      to   { width: var(--target-w, 0%); }
+    .project-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+    .pc-library  { background: linear-gradient(135deg, #1e3a8a, #1d4ed8); border: 1px solid rgba(59,130,246,0.3); }
+    .pc-hospital { background: linear-gradient(135deg, #312e81, #4338ca); border: 1px solid rgba(99,102,241,0.3); }
+    .pc-python   { background: linear-gradient(135deg, #1e1b4b, #3730a3); border: 1px solid rgba(67,56,202,0.3); }
+    .pc-future   { background: linear-gradient(135deg, #0c2a1a, #064e3b); border: 1px solid rgba(52,211,153,0.3); }
+    .wip-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+      background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.4);
+      color: #6ee7b7; margin-bottom: 8px;
     }
-    /* ── SCROLLBAR ── */
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .ptag { font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+    .ptag-java   { background: rgba(99,102,241,0.18);  border: 1px solid rgba(99,102,241,0.4);  color: #a5b4fc; }
+    .ptag-oop    { background: rgba(59,130,246,0.18);  border: 1px solid rgba(59,130,246,0.4);  color: #93c5fd; }
+    .ptag-python { background: rgba(234,179,8,0.12);   border: 1px solid rgba(234,179,8,0.35);  color: #fde68a; }
+    .ptag-logic  { background: rgba(14,165,233,0.12);  border: 1px solid rgba(14,165,233,0.35); color: #7dd3fc; }
+    .ptag-web    { background: rgba(52,211,153,0.12);  border: 1px solid rgba(52,211,153,0.35); color: #6ee7b7; }
+    .ptag-future { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.35);color: #c4b5fd; }
+    .project-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .project-card p  { font-size: 0.82rem; color: rgba(200,215,255,0.85); line-height: 1.55; }
+    .project-icon    { font-size: 2rem; position: absolute; top: 16px; right: 18px; opacity: 0.18; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 12px; font-size: 0.78rem; font-weight: 700; color: #fff;
+      text-decoration: none; padding: 0.3rem 0.85rem;
+      border: 1.5px solid rgba(255,255,255,0.35); border-radius: 999px;
+      background: rgba(255,255,255,0.1); transition: background 0.2s, border-color 0.2s;
+    }
+    .project-link:hover { background: rgba(59,130,246,0.4); border-color: rgba(147,197,253,0.8); }
+
+    
+    .edu-timeline { display: flex; flex-direction: column; }
+    .edu-item {
+      display: flex; gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(59,130,246,0.12);
+    }
+    .edu-item:last-child  { border-bottom: none; padding-bottom: 0; }
+    .edu-item:first-child { padding-top: 0; }
+    .edu-dot {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .edu-dot-btech  { background: linear-gradient(135deg,#1d4ed8,#4338ca); }
+    .edu-dot-school { background: linear-gradient(135deg,#0369a1,#0ea5e9); }
+    .edu-content h3 { font-size: 0.97rem; font-weight: 700; color: var(--violet3); }
+    .edu-content p  { margin-top: 3px; font-size: 0.85rem; color: var(--muted); }
+    .edu-desc  { margin-top: 10px !important; font-size: 0.83rem !important; line-height: 1.7 !important; color: rgba(200,215,255,0.75) !important; }
+    .edu-badge { display: inline-block; margin-top: 7px; font-size: 0.73rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--violet2)); color: #fff; }
+
+    
+    .growth-list { display: flex; flex-direction: column; }
+    .growth-item {
+      display: flex; gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(59,130,246,0.12);
+    }
+    .growth-item:last-child  { border-bottom: none; padding-bottom: 0; }
+    .growth-item:first-child { padding-top: 0; }
+    .growth-dot {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .gd-dsa         { background: linear-gradient(135deg,#1d4ed8,#4338ca); }
+    .gd-consistency { background: linear-gradient(135deg,#5b21b6,#7c3aed); }
+    .gd-ai          { background: linear-gradient(135deg,#0369a1,#0ea5e9); }
+    .gd-placement   { background: linear-gradient(135deg,#065f46,#059669); }
+    .growth-content h3 { font-size: 0.97rem; font-weight: 700; color: var(--violet3); margin-bottom: 5px; }
+    .growth-content p  { font-size: 0.85rem; line-height: 1.75; color: rgba(200,215,255,0.78); }
+
+    
+    .lang-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .lang-chip {
+      padding: 0.6rem 1.5rem; border-radius: 14px;
+      font-size: 0.9rem; font-weight: 700;
+      transition: box-shadow 0.2s;
+    }
+    .lc-en { background: rgba(37,99,235,0.15);  border: 1.5px solid rgba(99,102,241,0.4);  color: #a5b4fc; }
+    .lc-ml { background: rgba(91,33,182,0.15);  border: 1.5px solid rgba(124,58,237,0.4);  color: #c4b5fd; }
+    .lang-chip:hover { box-shadow: 0 4px 14px rgba(37,99,235,0.2); }
+
+    
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; border-radius: 14px;
+      background: rgba(10,15,50,0.6);
+      border: 1px solid rgba(59,130,246,0.15);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .contact-item:hover {
+      transform: translateX(4px);
+      background: rgba(20,30,80,0.8);
+      border-color: rgba(99,102,241,0.4);
+    }
+    .contact-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .ci-phone  { background: linear-gradient(135deg,#1d4ed8,#2563eb); }
+    .ci-email  { background: linear-gradient(135deg,#0369a1,#0ea5e9); }
+    .ci-github { background: linear-gradient(135deg,#1e1b4b,#312e81); }
+    .contact-text   { display: flex; flex-direction: column; gap: 1px; }
+    .contact-label  { font-size: 0.72rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-item a { color: var(--violet3); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--blue2); }
+
+   
     ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-track { background: #000008; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(var(--blue), var(--violet2)); border-radius: 999px; }
+
+
     @media (max-width: 600px) {
       .hero { flex-direction: column; text-align: center; }
       .hero-info h1 { font-size: 1.9rem; }
@@ -759,11 +432,9 @@
 </head>
 <body>
 <div class="bg-canvas"></div>
-<div class="noise"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-<div class="orb orb-4"></div>
+
 <nav>
   <a href="#about"><span>👤 About</span></a>
   <a href="#skills"><span>💻 Skills</span></a>
@@ -772,11 +443,12 @@
   <a href="#growth"><span>🚀 Growth</span></a>
   <a href="#contact"><span>✉️ Contact</span></a>
 </nav>
+
 <div class="page">
+  <!-- HERO -->
   <div class="card hero-card">
     <div class="hero">
       <div class="avatar-wrap">
-        <div class="avatar-glow"></div>
         <img src="Gemini_Generated_Image_61xave61xave61xa.png" alt="Aziya KK"/>
         <div class="avatar-ring"></div>
         <div class="avatar-ring2"></div>
@@ -794,7 +466,9 @@
       </div>
     </div>
   </div>
-  <div class="card reveal" id="about">
+
+  <!-- ABOUT -->
+  <div class="card" id="about">
     <h2>👤 About Me</h2>
     <p class="about-intro">I am a second-semester Computer Science Engineering student at Amritapuri, originally from Ernakulam. I am passionate about technology and continuously expanding my knowledge in computing. I am building my foundation in programming and problem-solving, and aim to contribute meaningfully through innovation and dedication in computer science.</p>
     <div class="about-boxes">
@@ -820,7 +494,9 @@
       </div>
     </div>
   </div>
-  <div class="card reveal" id="skills">
+
+  <!-- SKILLS -->
+  <div class="card" id="skills">
     <h2>💻 Skills</h2>
     <div class="skills-list">
       <div class="skill-row">
@@ -828,92 +504,84 @@
           <span class="skill-tag st-python">🐍 Python</span>
           <span class="skill-pct">80%</span>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill pf-python" style="--target-w:80%"></div>
-        </div>
-        <p class="skill-desc">Basics of programming including loops, conditionals, and writing simple problem-solving programs. Comfortable with logic building and small utility scripts.</p>
+        <div class="progress-track"><div class="progress-fill pf-python" style="--target-w:80%"></div></div>
+        <p class="skill-desc">Basics of programming including loops, conditionals, and writing simple problem-solving programs.</p>
       </div>
       <div class="skill-row">
         <div class="skill-header">
           <span class="skill-tag st-java">☕ Java (OOP)</span>
           <span class="skill-pct">90%</span>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill pf-java" style="--target-w:90%"></div>
-        </div>
-        <p class="skill-desc">Strong understanding of object-oriented programming concepts such as classes, objects, inheritance, and methods, applied through basic projects.</p>
+        <div class="progress-track"><div class="progress-fill pf-java" style="--target-w:90%"></div></div>
+        <p class="skill-desc">Strong understanding of OOP concepts such as classes, objects, inheritance, and methods.</p>
       </div>
       <div class="skill-row">
         <div class="skill-header">
           <span class="skill-tag st-html">🌐 HTML &amp; CSS</span>
           <span class="skill-pct">78%</span>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill pf-html" style="--target-w:78%"></div>
-        </div>
-        <p class="skill-desc">Able to create structured web pages and design clean layouts using HTML and CSS with a focus on responsiveness and simple UI design.</p>
+        <div class="progress-track"><div class="progress-fill pf-html" style="--target-w:78%"></div></div>
+        <p class="skill-desc">Able to create structured web pages and design clean layouts with a focus on responsiveness.</p>
       </div>
       <div class="skill-row">
         <div class="skill-header">
           <span class="skill-tag st-oop">🧩 OOP Concepts</span>
           <span class="skill-pct">60%</span>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill pf-oop" style="--target-w:60%"></div>
-        </div>
-        <p class="skill-desc">Good understanding of core principles like encapsulation, inheritance, and modular design, mainly practiced using Java.</p>
+        <div class="progress-track"><div class="progress-fill pf-oop" style="--target-w:60%"></div></div>
+        <p class="skill-desc">Good understanding of encapsulation, inheritance, and modular design, mainly in Java.</p>
       </div>
       <div class="skill-row">
         <div class="skill-header">
           <span class="skill-tag st-ps">💡 Problem Solving</span>
           <span class="skill-pct">75%</span>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill pf-ps" style="--target-w:75%"></div>
-        </div>
-        <p class="skill-desc">Regularly practice logical thinking through coding exercises like palindrome checks, pattern problems, and basic algorithmic challenges.</p>
+        <div class="progress-track"><div class="progress-fill pf-ps" style="--target-w:75%"></div></div>
+        <p class="skill-desc">Regularly practice logical thinking through palindrome checks, pattern problems, and basic algorithmic challenges.</p>
       </div>
     </div>
   </div>
-  <div class="card reveal" id="projects">
+
+  <!-- PROJECTS -->
+  <div class="card" id="projects">
     <h2>📁 Projects</h2>
     <div class="project-grid">
       <div class="project-card pc-library">
         <span class="project-icon">📚</span>
         <h3>Library Management System</h3>
-        <p>A Java-based application developed using object-oriented programming concepts to manage book records, issue/return processes, and user details. This project helped me understand how classes and objects interact in a real-world scenario, and how data can be organized efficiently within a system.</p>
+        <p>A Java-based application developed using OOP concepts to manage book records, issue/return processes, and user details.</p>
         <div class="project-tags">
           <span class="ptag ptag-java">Java</span>
           <span class="ptag ptag-oop">OOP</span>
         </div>
         <a href="https://github.com/aziyakk974-bit" target="_blank" class="project-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
       <div class="project-card pc-hospital">
         <span class="project-icon">🏥</span>
         <h3>Hospital Management System</h3>
-        <p>A project designed to simulate hospital operations such as managing patient details, doctor information, and appointment workflows. Through this, I practiced implementing OOP principles like encapsulation and modular design, and understood how software can model real-life systems.</p>
+        <p>Simulates hospital operations such as managing patient details, doctor information, and appointment workflows.</p>
         <div class="project-tags">
           <span class="ptag ptag-java">Java</span>
           <span class="ptag ptag-oop">OOP</span>
         </div>
         <a href="https://github.com/aziyakk974-bit" target="_blank" class="project-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
       <div class="project-card pc-python">
         <span class="project-icon">🐍</span>
         <h3>Python Mini Programs</h3>
-        <p>A collection of small programs including palindrome checker, character frequency counter, and basic logic-based problems. These programs helped me strengthen my understanding of loops, conditionals, and problem-solving techniques step by step.</p>
+        <p>A collection of small programs including palindrome checker, character frequency counter, and basic logic-based problems.</p>
         <div class="project-tags">
           <span class="ptag ptag-python">Python</span>
           <span class="ptag ptag-logic">Logic</span>
         </div>
         <a href="https://github.com/aziyakk974-bit" target="_blank" class="project-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
@@ -921,7 +589,7 @@
         <span class="project-icon">🚀</span>
         <div class="wip-badge">🔧 Work in Progress</div>
         <h3>Future Project</h3>
-        <p>Planning to build a more advanced project combining current programming knowledge with real-world applications — either a web-based application or a beginner-level AI project that can solve simple problems, while continuing to learn new technologies.</p>
+        <p>Planning to build a more advanced project combining current programming knowledge with real-world applications — either a web-based application or a beginner-level AI project.</p>
         <div class="project-tags">
           <span class="ptag ptag-web">Web / AI</span>
           <span class="ptag ptag-future">Coming Soon</span>
@@ -929,7 +597,9 @@
       </div>
     </div>
   </div>
-  <div class="card reveal" id="education">
+
+  <!-- EDUCATION -->
+  <div class="card" id="education">
     <h2>🎓 Education</h2>
     <div class="edu-timeline">
       <div class="edu-item">
@@ -938,7 +608,7 @@
           <h3>B.Tech – Computer Science Engineering</h3>
           <p>Amrita Vishwa Vidyapeetham, Amritapuri</p>
           <span class="edu-badge">2025 – 2029</span>
-          <p class="edu-desc">Currently pursuing my undergraduate degree with a focus on building strong fundamentals in programming and computer science. I am actively learning subjects like programming, data structures basics, and problem solving. Along with academics, I am working on small projects to improve my practical knowledge and understanding of real-world applications.</p>
+          <p class="edu-desc">Currently pursuing my undergraduate degree with a focus on building strong fundamentals in programming and computer science. Actively working on small projects to improve practical knowledge.</p>
         </div>
       </div>
       <div class="edu-item">
@@ -946,52 +616,58 @@
         <div class="edu-content">
           <h3>Higher Secondary Education</h3>
           <p>Carmel CMI Public School, Vazhakulam</p>
-          <p class="edu-desc">Completed my higher secondary education with a background in biology. This transition from biology to computer science has helped me develop adaptability and a strong learning mindset, as I am exploring a completely new field with curiosity and dedication.</p>
+          <p class="edu-desc">Completed higher secondary education with a background in biology. This transition to computer science has helped me develop adaptability and a strong learning mindset.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="card reveal" id="growth">
+
+  <!-- GROWTH -->
+  <div class="card" id="growth">
     <h2>🚀 Growth Plan &amp; Areas for Improvement</h2>
     <div class="growth-list">
       <div class="growth-item">
         <div class="growth-dot gd-dsa">🧠</div>
         <div class="growth-content">
           <h3>Data Structures &amp; Algorithms</h3>
-          <p>Strengthening problem-solving by practicing DSA regularly — starting from basic concepts and gradually moving to more complex problems, focusing on understanding different approaches rather than just memorizing solutions. I am also trying to relate these concepts with simple real-life examples and small coding tasks so that I can understand them more clearly. This approach helps me avoid confusion and build a strong conceptual base.</p>
+          <p>Strengthening problem-solving by practicing DSA regularly — starting from basic concepts and gradually moving to more complex problems, focusing on understanding different approaches rather than memorizing solutions.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-consistency">📅</div>
         <div class="growth-content">
           <h3>Daily Coding Consistency</h3>
-          <p>Building a habit of solving problems daily and working on more structured, real-world projects to improve development skills and deepen practical understanding of programming concepts. I also make an effort to review my mistakes and understand where I go wrong, so that I can improve in future problems. This continuous practice is helping me become more comfortable with coding.</p>
+          <p>Building a habit of solving problems daily and working on more structured, real-world projects to improve development skills and deepen practical understanding of programming concepts.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-ai">🤖</div>
         <div class="growth-content">
           <h3>Exploring Artificial Intelligence</h3>
-          <p>Interested in exploring AI at a beginner level to understand how intelligent systems work and how they can be applied to solve practical, everyday problems in meaningful ways. I am curious to see how AI is used in different fields and how simple models can be created even with basic knowledge. This motivates me to keep exploring and learning new concepts step by step.</p>
+          <p>Interested in exploring AI at a beginner level to understand how intelligent systems work and how they can be applied to solve practical, everyday problems in meaningful ways.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-placement">🎯</div>
         <div class="growth-content">
           <h3>Career &amp; Placement Goals</h3>
-          <p>In the coming years, my goal is to develop strong technical skills, gain hands-on experience through projects, and prepare myself to secure a good placement opportunity in the software industry. I am also focusing on improving my confidence and communication skills, which are important for interviews and teamwork. I believe combining technical skills with these abilities will help me grow professionally.</p>
+          <p>In the coming years, my goal is to develop strong technical skills, gain hands-on experience through projects, and prepare myself to secure a good placement opportunity in the software industry.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="card reveal">
+
+  <!-- LANGUAGES -->
+  <div class="card">
     <h2>💬 Languages</h2>
     <div class="lang-grid">
       <div class="lang-chip lc-en">🇬🇧 English</div>
       <div class="lang-chip lc-ml">🇮🇳 Malayalam</div>
     </div>
   </div>
-  <div class="card reveal" id="contact">
+
+  <!-- CONTACT -->
+  <div class="card" id="contact">
     <h2>✉️ Contact</h2>
     <ul class="contact-list">
       <li class="contact-item">
