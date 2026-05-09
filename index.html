@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aziya KK · Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
@@ -27,7 +26,7 @@
       overflow-x: hidden;
     }
 
-    
+    /* ── BACKGROUND ── */
     .bg-canvas {
       position: fixed;
       inset: 0;
@@ -38,7 +37,7 @@
         radial-gradient(ellipse 90% 70% at 50% 0%, #05082a 0%, #000010 55%, #000008 100%);
     }
 
-    
+    /* Two subtle orbs — no animation, just static glow */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -50,7 +49,7 @@
     .orb-1 { width: 400px; height: 400px; background: #1d4ed8; top: -120px; left: -120px; }
     .orb-2 { width: 320px; height: 320px; background: #5b21b6; bottom: -100px; right: -100px; }
 
-    
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -89,7 +88,7 @@
     nav a:hover { color: #fff; }
     nav a span { position: relative; z-index: 1; }
 
-    
+    /* ── PAGE ── */
     .page {
       max-width: 860px;
       margin: 0 auto;
@@ -99,7 +98,7 @@
       gap: 1.6rem;
     }
 
-    
+    /* ── CARDS ── */
     .card {
       background: rgba(5,8,30,0.78);
       backdrop-filter: blur(18px) saturate(160%);
@@ -121,7 +120,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    
+    /* ── HERO ── */
     .hero-card {
       background: linear-gradient(135deg, rgba(15,30,100,0.95) 0%, rgba(30,10,80,0.95) 50%, rgba(10,50,150,0.92) 100%);
       border: 1px solid rgba(59,130,246,0.35);
@@ -197,7 +196,7 @@
       50%       { opacity: 0.5; }
     }
 
-    
+    /* ── SECTION HEADINGS ── */
     h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem;
@@ -220,7 +219,7 @@
       border-radius: 999px;
     }
 
-    
+    /* ── ABOUT ── */
     .about-intro {
       font-size: 0.97rem;
       line-height: 1.9;
@@ -251,7 +250,7 @@
     }
     .about-box p { font-size: 0.83rem; line-height: 1.65; color: rgba(200,215,255,0.82); }
 
-  
+    /* ── SKILLS ── */
     .skills-list { display: flex; flex-direction: column; gap: 20px; }
     .skill-row   { display: flex; flex-direction: column; gap: 6px; }
     .skill-header {
@@ -299,7 +298,7 @@
     .pf-ps     { background: linear-gradient(90deg, #3730a3, #4f46e5, #818cf8); }
     .skill-desc { font-size: 0.81rem; line-height: 1.65; color: var(--muted); margin-top: 4px; padding-left: 4px; }
 
-    
+    /* ── PROJECTS ── */
     .project-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
     .project-card {
       border-radius: 16px; padding: 20px;
@@ -338,7 +337,7 @@
     }
     .project-link:hover { background: rgba(59,130,246,0.4); border-color: rgba(147,197,253,0.8); }
 
-    
+    /* ── EDUCATION ── */
     .edu-timeline { display: flex; flex-direction: column; }
     .edu-item {
       display: flex; gap: 18px;
@@ -358,7 +357,7 @@
     .edu-desc  { margin-top: 10px !important; font-size: 0.83rem !important; line-height: 1.7 !important; color: rgba(200,215,255,0.75) !important; }
     .edu-badge { display: inline-block; margin-top: 7px; font-size: 0.73rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--violet2)); color: #fff; }
 
-    
+    /* ── GROWTH ── */
     .growth-list { display: flex; flex-direction: column; }
     .growth-item {
       display: flex; gap: 18px;
@@ -378,7 +377,7 @@
     .growth-content h3 { font-size: 0.97rem; font-weight: 700; color: var(--violet3); margin-bottom: 5px; }
     .growth-content p  { font-size: 0.85rem; line-height: 1.75; color: rgba(200,215,255,0.78); }
 
-    
+    /* ── LANGUAGES ── */
     .lang-grid { display: flex; gap: 12px; flex-wrap: wrap; }
     .lang-chip {
       padding: 0.6rem 1.5rem; border-radius: 14px;
@@ -389,7 +388,7 @@
     .lc-ml { background: rgba(91,33,182,0.15);  border: 1.5px solid rgba(124,58,237,0.4);  color: #c4b5fd; }
     .lang-chip:hover { box-shadow: 0 4px 14px rgba(37,99,235,0.2); }
 
-    
+    /* ── CONTACT ── */
     .contact-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .contact-item {
       display: flex; align-items: center; gap: 14px;
@@ -415,12 +414,12 @@
     .contact-item a { color: var(--violet3); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     .contact-item a:hover { color: var(--blue2); }
 
-   
+    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 7px; }
     ::-webkit-scrollbar-track { background: #000008; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(var(--blue), var(--violet2)); border-radius: 999px; }
 
-
+    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .hero { flex-direction: column; text-align: center; }
       .hero-info h1 { font-size: 1.9rem; }
@@ -550,7 +549,7 @@
       <div class="project-card pc-library">
         <span class="project-icon">📚</span>
         <h3>Library Management System</h3>
-        <p>A Java-based application developed using OOP concepts to manage book records, issue/return processes, and user details.</p>
+        <p>A Java-based application developed using object-oriented programming concepts to manage book records, issue/return processes, and user details. This project helped me understand how classes and objects interact in a real-world scenario, and how data can be organized efficiently within a system.</p>
         <div class="project-tags">
           <span class="ptag ptag-java">Java</span>
           <span class="ptag ptag-oop">OOP</span>
@@ -563,7 +562,7 @@
       <div class="project-card pc-hospital">
         <span class="project-icon">🏥</span>
         <h3>Hospital Management System</h3>
-        <p>Simulates hospital operations such as managing patient details, doctor information, and appointment workflows.</p>
+        <p>A project designed to simulate hospital operations such as managing patient details, doctor information, and appointment workflows. Through this, I practiced implementing OOP principles like encapsulation and modular design, and understood how software can model real-life systems.</p>
         <div class="project-tags">
           <span class="ptag ptag-java">Java</span>
           <span class="ptag ptag-oop">OOP</span>
@@ -576,7 +575,7 @@
       <div class="project-card pc-python">
         <span class="project-icon">🐍</span>
         <h3>Python Mini Programs</h3>
-        <p>A collection of small programs including palindrome checker, character frequency counter, and basic logic-based problems.</p>
+        <p>A collection of small programs including palindrome checker, character frequency counter, and basic logic-based problems. These programs helped me strengthen my understanding of loops, conditionals, and problem-solving techniques step by step.</p>
         <div class="project-tags">
           <span class="ptag ptag-python">Python</span>
           <span class="ptag ptag-logic">Logic</span>
@@ -590,7 +589,7 @@
         <span class="project-icon">🚀</span>
         <div class="wip-badge">🔧 Work in Progress</div>
         <h3>Future Project</h3>
-        <p>Planning to build a more advanced project combining current programming knowledge with real-world applications — either a web-based application or a beginner-level AI project.</p>
+        <p>Planning to build a more advanced project combining current programming knowledge with real-world applications — either a web-based application or a beginner-level AI project that can solve simple problems, while continuing to learn new technologies.</p>
         <div class="project-tags">
           <span class="ptag ptag-web">Web / AI</span>
           <span class="ptag ptag-future">Coming Soon</span>
@@ -609,7 +608,7 @@
           <h3>B.Tech – Computer Science Engineering</h3>
           <p>Amrita Vishwa Vidyapeetham, Amritapuri</p>
           <span class="edu-badge">2025 – 2029</span>
-          <p class="edu-desc">Currently pursuing my undergraduate degree with a focus on building strong fundamentals in programming and computer science. Actively working on small projects to improve practical knowledge.</p>
+          <p class="edu-desc">Currently pursuing my undergraduate degree with a focus on building strong fundamentals in programming and computer science. I am actively learning subjects like programming, data structures basics, and problem solving. Along with academics, I am working on small projects to improve my practical knowledge and understanding of real-world applications.</p>
         </div>
       </div>
       <div class="edu-item">
@@ -617,7 +616,7 @@
         <div class="edu-content">
           <h3>Higher Secondary Education</h3>
           <p>Carmel CMI Public School, Vazhakulam</p>
-          <p class="edu-desc">Completed higher secondary education with a background in biology. This transition to computer science has helped me develop adaptability and a strong learning mindset.</p>
+          <p class="edu-desc">Completed my higher secondary education with a background in biology. This transition from biology to computer science has helped me develop adaptability and a strong learning mindset, as I am exploring a completely new field with curiosity and dedication.</p>
         </div>
       </div>
     </div>
@@ -631,28 +630,28 @@
         <div class="growth-dot gd-dsa">🧠</div>
         <div class="growth-content">
           <h3>Data Structures &amp; Algorithms</h3>
-          <p>Strengthening problem-solving by practicing DSA regularly — starting from basic concepts and gradually moving to more complex problems, focusing on understanding different approaches rather than memorizing solutions.</p>
+          <p>Strengthening problem-solving by practicing DSA regularly — starting from basic concepts and gradually moving to more complex problems, focusing on understanding different approaches rather than just memorizing solutions. I am also trying to relate these concepts with simple real-life examples and small coding tasks so that I can understand them more clearly. This approach helps me avoid confusion and build a strong conceptual base.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-consistency">📅</div>
         <div class="growth-content">
           <h3>Daily Coding Consistency</h3>
-          <p>Building a habit of solving problems daily and working on more structured, real-world projects to improve development skills and deepen practical understanding of programming concepts.</p>
+          <p>Building a habit of solving problems daily and working on more structured, real-world projects to improve development skills and deepen practical understanding of programming concepts. I also make an effort to review my mistakes and understand where I go wrong, so that I can improve in future problems. This continuous practice is helping me become more comfortable with coding.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-ai">🤖</div>
         <div class="growth-content">
           <h3>Exploring Artificial Intelligence</h3>
-          <p>Interested in exploring AI at a beginner level to understand how intelligent systems work and how they can be applied to solve practical, everyday problems in meaningful ways.</p>
+          <p>Interested in exploring AI at a beginner level to understand how intelligent systems work and how they can be applied to solve practical, everyday problems in meaningful ways. I am curious to see how AI is used in different fields and how simple models can be created even with basic knowledge. This motivates me to keep exploring and learning new concepts step by step.</p>
         </div>
       </div>
       <div class="growth-item">
         <div class="growth-dot gd-placement">🎯</div>
         <div class="growth-content">
           <h3>Career &amp; Placement Goals</h3>
-          <p>In the coming years, my goal is to develop strong technical skills, gain hands-on experience through projects, and prepare myself to secure a good placement opportunity in the software industry.</p>
+          <p>In the coming years, my goal is to develop strong technical skills, gain hands-on experience through projects, and prepare myself to secure a good placement opportunity in the software industry. I am also focusing on improving my confidence and communication skills, which are important for interviews and teamwork. I believe combining technical skills with these abilities will help me grow professionally.</p>
         </div>
       </div>
     </div>
